@@ -9,7 +9,7 @@ import Card from './components/Card';
 import img1 from './assets/1.png';
 import vector from './assets/Vector 34.png'
 import vector2 from './assets/Vector 37 (1).svg'
-import concierge from './assets/con.png';
+import concierge from './assets/newcon.png';
 import group from './assets/Group 1939.svg'
 import family1 from './assets/family (1).png';
 import family2 from './assets/family (2).png';
