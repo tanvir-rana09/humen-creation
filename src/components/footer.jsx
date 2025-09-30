@@ -257,7 +257,7 @@ const TestimonialCarousel = () => {
 						initial="hidden"
 						animate={yellowSectionInView ? "visible" : "hidden"}
 						variants={slideInFromBottom}
-						className="absolute inset-0 border-[2px] border-gray-600 rounded-[32px] transform -rotate-6 scale-[1.01] opacity-80"
+						className="absolute inset-0 border-[2px] border-gray-600 rounded-[32px] transform -rotate-6 scale-[1.01] opacity-80 hidden lg:block"
 					>
 					</motion.div>
 
@@ -273,7 +273,7 @@ const TestimonialCarousel = () => {
 								initial="hidden"
 								animate={yellowSectionInView ? "visible" : "hidden"}
 								variants={fadeInLeft}
-								className="flex-1 p-8 sm:p-12 lg:p-16 "
+								className="flex-1 p-4 xl:p-8 sm:p-12 lg:p-16 "
 							>
 								<div className="max-w-lg">
 									{/* Icon */}
@@ -301,8 +301,8 @@ const TestimonialCarousel = () => {
 								variants={fadeInRight}
 								className="p-8 xl:p-12"
 							>
-								<div className="bg-white border-2 border-gray-400 rounded-4xl p-8 shadow-xl max-w-3xl w-full">
-									<h3 className="text-4xl font-medium text-gray-900 mb-8 tracking-tight">
+								<div className="bg-white border-2 border-gray-400 rounded-2xl xl:rounded-4xl p-4 xl:p-8 shadow-xl max-w-3xl w-full">
+									<h3 className="xl:text-4xl text-2xl font-medium text-gray-900 mb-8 tracking-tight">
 										Reserve Your Place
 									</h3>
 

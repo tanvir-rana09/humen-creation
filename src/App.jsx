@@ -354,7 +354,7 @@ export default function ForeverYOULanding() {
 
       {/* Concierge Section */}
       <section ref={conciergeRef} className=" py-48 px-8 overflow-hidden my-10 bg-[#FFFCEA] mx-auto max-w-7xl rounded-4xl relative" id="concierge">
-        <div className='!absolute -top-2.5 right-[11.5rem] z-10 w-[18rem] h-48'>
+        <div className='!absolute -top-2.5 right-[11.5rem] z-10 w-[18rem] h-48 hidden xl:block'>
           <img src={group} alt="vector" />
         </div>
         <div className="max-w-7xl mx-auto grid justify-between md:grid-cols-2 gap-16 items-center">
@@ -363,12 +363,12 @@ export default function ForeverYOULanding() {
             animate={conciergeInView ? "visible" : "hidden"}
             variants={fadeInLeft}
           >
-            <h2 className="text-4xl md:text-5xl font-serif text-gray-900 leading-tight mb-6">
+            <h2 className="text-3xl md:text-5xl font-serif text-gray-900 leading-tight mb-6">
               <span className='font-bold'>ForeverYOU Concierge</span> <br />
               for families who want <br />
               the very best
             </h2>
-            <p className="text-base text-gray-700 leading-relaxed mb-8">
+            <p className=" text-gray-700 mb-8 text-sm">
               Our Platinum Concierge team personally guides you through the process of creating a ForeverYOU. From in-home recordings to beautifully curated archives, every detail is handled with care and discretion.
             </p>
             <button className="bg-[#1a3e3e] text-white px-8 py-3 rounded-full hover:bg-[#2a4e4e]  font-medium">
@@ -571,7 +571,7 @@ export default function ForeverYOULanding() {
         <div className="max-w-6xl mx-auto px-8 pt-20 pb-12">
           <div className="text-center mb-16 relative">
             <div>
-              <img src={vector2} alt="vector" className='!absolute -top-[20.5rem] -left-[2.1rem] w-[16rem] -rotate-12 ' />
+              <img src={vector2} alt="vector" className='!absolute -top-[20.5rem] hidden xl:block -left-[2.1rem] w-[16rem] -rotate-12 ' />
             </div>
             <motion.h2
               initial="hidden"
@@ -597,21 +597,21 @@ export default function ForeverYOULanding() {
               animate={processInView ? "visible" : "hidden"}
               variants={fadeInUp}
               transition={{ delay: 0.2 }}
-              className="flex items-center justify-center gap-10 "
+              className="flex items-center justify-center gap-5 xl:gap-10 "
             >
-              <button className="px-6 py-2 z-20 bg-white border border-gray-300 rounded-full text-gray-700 hover:bg-gray-50">
+              <button className="px-6 text-sm xl:text-base py-2 z-20 bg-white border border-gray-300 rounded-full text-gray-700 hover:bg-gray-50">
                 Unbox
               </button>
-              <button className="px-6 py-2 z-20 bg-gray-800 text-white rounded-full hover:bg-gray-900">
+              <button className="px-6 text-sm xl:text-base py-2 z-20 bg-gray-800 text-white rounded-full hover:bg-gray-900">
                 Record
               </button>
-              <button className="px-6 py-2 z-20 bg-white border border-gray-300 rounded-full text-gray-700 hover:bg-gray-50">
+              <button className="px-6 text-sm xl:text-base py-2 z-20 bg-white border border-gray-300 rounded-full text-gray-700 hover:bg-gray-50">
                 Start
               </button>
-              <button className="px-6 py-2 z-20 bg-white border border-gray-300 rounded-full text-gray-700 hover:bg-gray-50">
+              <button className="px-6 text-sm xl:text-base py-2 z-20 bg-white border border-gray-300 rounded-full text-gray-700 hover:bg-gray-50">
                 Grow
               </button>
-              <div className='table h-0.5 bottom-5 mx-auto w-[30rem] absolute left-1/2 transform -translate-x-1/2 z-10 bg-gray-500 rounded-full'></div>
+              <div className='table h-0.5 bottom-5 mx-auto w-[25rem] xl:w-[30rem] absolute left-1/2 transform -translate-x-1/2 z-10 bg-gray-500 rounded-full'></div>
             </motion.div>
           </div>
         </div>
@@ -620,7 +620,7 @@ export default function ForeverYOULanding() {
           <div className="max-w-4xl mx-auto ">
             <ScrollStack stackTop={10} cardGap={24} scaleAmount={0.03}>
               <StackCard className="p-8 bg-white rounded-[40px] shadow-lg mb-20">
-                <div className="flex gap-8 items-center">
+                <div className="flex gap-8 items-center flex-col xl:flex-row">
                   <div className="flex-shrink-0 w-96">
                     <div className="bg-gradient-to-br from-[#4ba3c3] to-[#5ab1d0] rounded-3xl overflow-hidden aspect-[4/3]">
                       <img
@@ -646,7 +646,7 @@ export default function ForeverYOULanding() {
               </StackCard>
 
               <StackCard className="p-8 bg-white rounded-[40px] shadow-lg mb-20">
-                <div className="flex gap-8 items-center">
+                <div className="flex gap-8 items-center flex-col xl:flex-row">
                   <div className="flex-shrink-0 w-96">
                     <div className="bg-gradient-to-br from-[#d4e8e4] to-[#c2ded9] rounded-3xl overflow-hidden aspect-[4/3]">
                       <img
@@ -673,7 +673,7 @@ export default function ForeverYOULanding() {
               </StackCard>
 
               <StackCard className="p-8 bg-white rounded-[40px] shadow-lg mb-20">
-                <div className="flex gap-8 items-center">
+                <div className="flex gap-8 items-center flex-col xl:flex-row">
                   <div className="flex-shrink-0 w-96">
                     <div className="bg-gradient-to-br from-[#f4e4d4] to-[#e8d4c4] rounded-3xl overflow-hidden aspect-[4/3]">
                       <img
@@ -700,7 +700,7 @@ export default function ForeverYOULanding() {
               </StackCard>
 
               <StackCard className="p-8 bg-white rounded-[40px] shadow-lg mb-20">
-                <div className="flex gap-8 items-center">
+                <div className="flex gap-8 items-center flex-col xl:flex-row">
                   <div className="flex-shrink-0 w-96">
                     <div className="bg-gradient-to-br from-[#e8d4f4] to-[#d4c4e8] rounded-3xl overflow-hidden aspect-[4/3]">
                       <img
@@ -737,7 +737,7 @@ export default function ForeverYOULanding() {
             className="relative"
           >
             <FamilyStoryCard img={familyStory} />
-            <div className="absolute -bottom-[29rem] right-[21rem] w-[10rem] h-full ">
+            <div className="absolute -bottom-[29rem] right-[21rem] w-[10rem] hidden md:block  h-full ">
               <img src={vector3} alt="" />
             </div>
           </motion.div>
