@@ -162,8 +162,8 @@ export default function ForeverYOULanding() {
             transition={{ delay: 0.2 }}
             className="relative "
           >
-            <div className='rounded-[35px] shadow-xl border-[3px] border-gray-900 -rotate-[8deg]   '>
-              <div className="relative z-10 bg-[#FFFCEA]/95 rounded-[32px] rotate-[8deg] p-2.5 shadow-xl border-[3px] border-gray-900 h-[28rem] ">
+            <div className='rounded-[35px] shadow-xl cursor-pointer border-[3px] border-gray-900 -rotate-[8deg] hover:rotate-0 duration-500'>
+              <div className="relative z-10 bg-[#FFFCEA]/95 rounded-[32px] rotate-[8deg] p-2.5 shadow-xl border-[3px] border-gray-900 h-[28rem] hover:rotate-0 duration-500">
                 <div style={{
                   backgroundImage: `url(${old})`,
                   backgroundSize: 'cover',
@@ -784,9 +784,6 @@ export default function ForeverYOULanding() {
           </motion.div>
         </div>
       </section>
-
-
-
       <TestimonialCarousel />
     </div>
   );
