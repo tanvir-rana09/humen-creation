@@ -201,7 +201,7 @@ const TestimonialCarousel = () => {
               <img
                 src={vector38}
                 alt=""
-                className="hidden lg:block absolute bottom-18 left-[6.4rem] w-8 lg:w-7 transform rotate-[80deg]"
+                className="hidden lg:block absolute bottom-20 left-[6.9rem] w-8 lg:w-7 transform rotate-[80deg]"
               />
             </h1>
           </motion.div>

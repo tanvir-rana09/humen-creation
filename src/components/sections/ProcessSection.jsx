@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import vector2 from '../../assets/Vector 3-1.svg'
 import AnimatedHeadingAndDescription from "../AnimatedHeadingAndDescription";
+
 /* ---------- slides ---------- */
 const SLIDES = [
   {
@@ -27,6 +28,9 @@ const SLIDES = [
     img: "https://images.unsplash.com/photo-1511895426328-dc8714191300?w=1600&h=1200&fit=crop",
   },
 ];
+
+const NUMBER_OF_SLIDES = SLIDES.length;
+
 export default function ProcessSection() {
   const sectionRef = useRef(null);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -42,87 +46,101 @@ export default function ProcessSection() {
       const windowHeight = window.innerHeight;
       const sectionHeight = section.offsetHeight;
 
-      // --- 1️⃣ Only stick when section top touches the viewport
-      const buffer = 100;
-      const shouldBeSticky = rect.top <= 0 && rect.bottom > windowHeight - buffer;
+      const stickyStart = rect.top <= 0;
+      const stickyEnd = rect.bottom <= windowHeight;
+      const shouldBeSticky = stickyStart && !stickyEnd;
 
       setIsSticky(shouldBeSticky);
 
-      // --- 2️⃣ Calculate internal progress only when sticky
       if (shouldBeSticky) {
-        const scrolled = Math.min(Math.abs(rect.top), sectionHeight - windowHeight);
+        const scrolled = Math.abs(rect.top);
         const maxScroll = sectionHeight - windowHeight;
-        const progress = Math.min(scrolled / maxScroll, 1);
+        const progress = Math.max(0, Math.min(scrolled / maxScroll, 1));
 
         setScrollProgress(progress);
 
         const slideIndex = Math.min(
-          Math.floor(progress * SLIDES.length),
-          SLIDES.length - 1
+          Math.floor(progress * NUMBER_OF_SLIDES),
+          NUMBER_OF_SLIDES - 1
         );
         setCurrentSlide(slideIndex);
+      } else if (stickyEnd) {
+        setScrollProgress(1);
+        setCurrentSlide(NUMBER_OF_SLIDES - 1);
+      } else {
+        setScrollProgress(0);
+        setCurrentSlide(0);
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    let ticking = false;
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
 
+    window.addEventListener("scroll", onScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <section
       ref={sectionRef}
       id="how-it-works"
-      className=" relative"
-      style={{ height: `calc(${(SLIDES.length) * 100}vh + 0vh)` }}
-
+      className="relative bg-[#FFFCEA]"
+      style={{ height: `calc(${SLIDES.length * 140}vh + 0vh)` }}
     >
-
       <div
-        className={`${isSticky ? "fixed top-0 left-0 w-full" : "relative top-0 left-0 w-full"
-          } h-screen bg-[#FF7A7A] flex flex-col justify-center items-center z-10 transition-all duration-300`}
+        className="left-0 w-full h-screen bg-[#FFFCEA] flex flex-col justify-center items-center z-10"
         style={{
-          opacity: scrollProgress > 0.99 ? 1 - (scrollProgress - 0.20) * 20 : 1,
+          position: isSticky ? 'fixed' : 'absolute',
+          top: isSticky ? 0 : 'auto',
+          bottom: !isSticky && scrollProgress > 0 ? 0 : 'auto'
         }}
       >
         <div>
-          <img 
-          src={vector2} 
-          alt="vector" 
-          className='!absolute -z-10 -top-[17.5rem] hidden xl:block left-[24rem] w-[16rem] -rotate-12 '/>
+          <img
+            src={vector2}
+            alt="vector"
+            className='!absolute -z-10 -top-[17.5rem] hidden xl:block left-[24rem] w-[16rem] -rotate-12 '
+          />
         </div>
-        <div className="absolute top-8 left-0 right-0 text-center z-20">
-           <AnimatedHeadingAndDescription
-heading={"Seamless. Secure. Personal."}
-headingClass="text-4xl md:text-5xl font-serif text-white mb-4 justify-center"
-description={
-  "Experience how simple it is to create your family's lasting legacy with complete control and security."}
-descriptionClass="text-white/90 mb-8 max-w-xl mx-auto text-lg"
-           />
 
-          <div className="flex items-center justify-center gap-4 md:gap-8 mb-8">
+        <div className="absolute top-8 left-0 right-0 text-center z-20">
+          <AnimatedHeadingAndDescription
+            heading={"Seamless. Secure. Personal."}
+            headingClass="text-4xl md:text-5xl font-serif  mb-4 justify-center"
+            description={
+              "Experience how simple it is to create your family's lasting legacy with complete control and security."}
+            descriptionClass=" mb-8 max-w-xl mx-auto text-lg"
+          />
+          {/* Progress indicators - Connected style from ProcessSection2 */}
+          <div className="flex items-center justify-center gap-0 mb-8">
             {SLIDES.map((s, i) => (
               <div key={s.key} className="flex items-center">
                 <div
-                  className={`w-12 h-12 rounded-full border-2 border-white flex items-center justify-center text-sm font-bold transition-all duration-500 ${i === currentSlide
-                    ? "bg-white text-[#FF7A7A]"
-                    : "bg-transparent text-white"
+                  className={`w-12 h-12 rounded-full border-2 flex items-center justify-center text-sm font-bold transition-all duration-500 relative z-10 ${i === currentSlide
+                      ? "bg-[#34414F] text-white border-[#34414F] scale-110"
+                      : i < currentSlide
+                        ? "bg-[#34414F] text-white border-[#34414F] scale-100"
+                        : "bg-transparent text-[#34414F] border-[#34414F]/30 scale-90"
                     }`}
                 >
                   {i + 1}
                 </div>
                 {i < SLIDES.length - 1 && (
-                  <div className="relative w-16 md:w-32 h-0.5 bg-white/40 ml-4">
+                  <div className="relative w-16 md:w-32 h-0.5 bg-[#34414F]/20">
                     <div
-                      className="absolute top-0 left-0 h-full bg-white transition-all duration-500"
+                      className="absolute top-0 left-0 h-full bg-[#34414F] transition-all duration-500"
                       style={{
-                        width:
-                          i < currentSlide
-                            ? "100%"
-                            : i === currentSlide
-                              ? `${(scrollProgress * SLIDES.length - currentSlide) * 100}%`
-                              : "0%",
+                        width: i < currentSlide ? '100%' :
+                          i === currentSlide ? `${((scrollProgress - (i / NUMBER_OF_SLIDES)) / (1 / NUMBER_OF_SLIDES)) * 100}%` : '0%'
                       }}
                     />
                   </div>
@@ -134,6 +152,17 @@ descriptionClass="text-white/90 mb-8 max-w-xl mx-auto text-lg"
 
         <div className="relative w-full max-w-7xl mx-auto px-4 md:px-8 h-[500px] mt-56 pt-8">
           {SLIDES.map((slide, index) => {
+            const slideStart = index / NUMBER_OF_SLIDES;
+            const slideEnd = (index + 1) / NUMBER_OF_SLIDES;
+            const slideRange = 1 / NUMBER_OF_SLIDES;
+
+            let slideProgress = 0;
+            if (scrollProgress >= slideStart && scrollProgress < slideEnd) {
+              slideProgress = (scrollProgress - slideStart) / slideRange;
+            } else if (scrollProgress >= slideEnd) {
+              slideProgress = 1;
+            }
+
             const isActive = index === currentSlide;
             const isPrevious = index < currentSlide;
             const isNext = index > currentSlide;
@@ -141,23 +170,28 @@ descriptionClass="text-white/90 mb-8 max-w-xl mx-auto text-lg"
             let translateY = 0;
             let scale = 1;
             let zIndex = 10;
+            let opacity = 1;
 
             if (isNext) {
-              translateY = 100;
-              zIndex = 5;
-            } else if (isPrevious) {
-              const slideProgress = scrollProgress * SLIDES.length - index;
-              translateY = -10 * Math.min(slideProgress, 1);
-              scale = 1 - 0.05 * Math.min(slideProgress, 1);
+              // Next slides: Hidden below
+              translateY = 280;
+              opacity = 0;
               zIndex = 5 + index;
+            } else if (isPrevious) {
+              // Previous slides: Stack behind with scroll-stack style
+              const distanceFromCurrent = currentSlide - index;
+              translateY = 0 * distanceFromCurrent; // Slight upward offset for stacking
+              scale = 1 - (0.05 * distanceFromCurrent); // Progressive scaling
+              opacity = 1; // Keep visible for stack effect
+              zIndex = 10 + index; // Lower z-index = behind
             } else if (isActive) {
               const slideProgress = scrollProgress * SLIDES.length - index;
+              // Slide comes from 100% down to 0% (final position matching step 3)
               translateY = 100 * (1 - Math.min(slideProgress, 1));
+              scale = 0.92 + (0.08 * Math.min(slideProgress, 1));
+              opacity = Math.min(slideProgress, 1);
               zIndex = 15;
             }
-
-            // Fade out everything smoothly near the end
-            // const fadeOut = scrollProgress > 0.95 ? (1 - scrollProgress) * 10 : 1;
 
             return (
               <div
@@ -165,6 +199,7 @@ descriptionClass="text-white/90 mb-8 max-w-xl mx-auto text-lg"
                 className="absolute inset-0 transition-all duration-700 ease-out"
                 style={{
                   transform: `translateY(${translateY}%) scale(${scale})`,
+                  //opacity,
                   zIndex,
                 }}
               >

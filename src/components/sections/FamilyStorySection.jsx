@@ -70,7 +70,7 @@ const FamilyStorySection = () => {
 
 	const processInView = useElementInView(processRef, 0.2);
 	return (
-		<div ref={processRef} className="max-w-7xl px-5 xl:px-0 py-56 mt-[6rem] mx-auto grid md:grid-cols-2 gap-16 items-center bg-[#FFFCEA] ">
+		<div ref={processRef} className="max-w-7xl px-5  py-56 mt-[6rem] mx-auto grid md:grid-cols-2 gap-16 items-center bg-[#FFFCEA]">
 			<motion.div
 				initial="hidden"
 				animate={processInView ? "visible" : "hidden"}
