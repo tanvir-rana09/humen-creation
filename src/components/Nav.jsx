@@ -7,20 +7,9 @@ const Nav = () => {
   const location = useLocation();
   const currentHash = location.hash;
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
 
   const isActive = (hash) => currentHash === hash;
 
-  // Handle scroll effect
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // Close mobile menu when route changes
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [location]);
@@ -259,8 +248,6 @@ const Nav = () => {
           </AnimatePresence>
         </div>
       </motion.nav>
-
-     
     </>
   );
 };

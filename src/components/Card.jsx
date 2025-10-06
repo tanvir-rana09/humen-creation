@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Card = ({img}) => {
+const Card = ({ img }) => {
 	return (
-		<div className='rounded-[35px] shadow-xl border-[3px] border-gray-600 cursor-pointer hover:-rotate-6 rotate-0 transition-all duration-500 '>
-			<div className="relative z-10 bg-white rounded-[32px] -rotate-6 hover:-rotate-0 p-2.5 shadow-xl border-[3px] border-gray-600  transition-all duration-500 aspect-5/5">
+		<div className='rounded-[35px] shadow-xl border-[3px] parent border-gray-600 cursor-pointer hover: transition-all duration-500 has-[.child:hover]:-rotate-6 '>
+			<div className="relative z-10 bg-white rounded-[32px] hover:rotate-0 child -rotate-6  p-2.5 shadow-xl border-[3px] border-gray-600  transition-all duration-500 aspect-5/5">
 				<div style={{
 					backgroundImage: `url(${img})`,
 					backgroundSize: 'cover',
