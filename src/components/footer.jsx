@@ -6,6 +6,7 @@ import { FaFacebookSquare, FaLinkedin, FaYoutube } from "react-icons/fa";
 import { ImInstagram } from "react-icons/im";
 import group from "../assets/Group.svg";
 import vector38 from "../assets/Vector 38.svg";
+import AnimatedHeadingAndDescription from "./AnimatedHeadingAndDescription";
 
 const SERVICE_ID = "";
 const TEMPLATE_ID = "";
@@ -193,17 +194,15 @@ const TestimonialCarousel = () => {
             className="flex-1"
           >
             <h1 className="relative text-4xl sm:text-5xl lg:text-6xl font-light text-gray-900 leading-[1.1] tracking-tight">
-              <span className="relative inline-block">
-                What families
-                {/* Arrow line decoration (desktop only) */}
-                <img
-                  src={vector38}
-                  alt=""
-                  className="hidden lg:block absolute bottom-18 left-[6.4rem] w-8 lg:w-7 transform rotate-[80deg]"
-                />
-              </span>
-              <br />
-              <span className="font-serif">are saying</span>
+
+              <AnimatedHeadingAndDescription
+                heading={"What families \n are saying"}
+              />
+              <img
+                src={vector38}
+                alt=""
+                className="hidden lg:block absolute bottom-18 left-[6.4rem] w-8 lg:w-7 transform rotate-[80deg]"
+              />
             </h1>
           </motion.div>
 
@@ -297,9 +296,8 @@ const TestimonialCarousel = () => {
                     <button
                       key={index}
                       onClick={() => goToSlide(index)}
-                      className={`w-2 h-2 rounded-full transition-colors ${
-                        index === currentSlide ? "bg-gray-900" : "bg-gray-300"
-                      }`}
+                      className={`w-2 h-2 rounded-full transition-colors ${index === currentSlide ? "bg-gray-900" : "bg-gray-300"
+                        }`}
                       aria-label={`Go to testimonial ${index + 1}`}
                     />
                   ))}
@@ -335,16 +333,13 @@ const TestimonialCarousel = () => {
                   <div className="mb-8">
                     <img src={group} alt="" />
                   </div>
-                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-gray-900 leading-[1.1] mb-6 tracking-tight font-serif">
-                    Our stories really
-                    <br />
-                    can <span className="font-semibold">live forever.</span>
-                  </h2>
-                  <p className="text-lg text-gray-800 leading-relaxed font-light">
-                    Join the private waitlist today. Founding members will
-                    receive exclusive benefits and early access across all
-                    pricing tiers.
-                  </p>
+                  <AnimatedHeadingAndDescription
+                    heading={"Our stories really can live forever."}
+                    description="Join the private waitlist today. Founding members will receive exclusive benefits and early access across all pricing tiers."
+                    headingClass="text-3xl sm:text-4xl lg:text-5xl font-light text-gray-900 leading-[1.1] mb-6 tracking-tight font-serif"
+                    descriptionClass="text-lg text-gray-800 leading-relaxed font-light"
+                  />
+
                 </div>
               </motion.div>
 
@@ -449,12 +444,16 @@ const TestimonialCarousel = () => {
           <motion.h3
             initial="hidden"
             animate={productsInView ? "visible" : "hidden"}
-            variants={fadeInLeft}
+            whileHover={{ y: -4 }}
+            variants={fadeInUp}
             className="text-3xl lg:text-4xl font-light text-gray-900 mb-12 leading-tight tracking-tight"
           >
             Other Products by
             <br />
-            <span className="font-semibold">The Human Connection Company</span>
+            <motion.span initial="hidden"
+              animate={productsInView ? "visible" : "hidden"}
+              whileHover={{ y: -4 }}
+              variants={fadeInUp} className="font-semibold">The Human Connection Company</motion.span>
           </motion.h3>
 
           <motion.div
@@ -469,12 +468,12 @@ const TestimonialCarousel = () => {
               whileHover={{ y: -4 }}
               className="border-2 border-gray-500 rounded-2xl p-4 hover:border-gray-300 cursor-pointer group"
             >
-              <div className="flex items-center gap-3 ">
+              <a href="https://winny.chat" target="_blank" className="flex items-center gap-3 ">
                 <span className="text-xl font-medium text-gray-900">
                   Winny.chat
                 </span>
                 <ArrowUpRight />
-              </div>
+              </a>
               <p className="text-gray-600 leading-relaxed">
                 Share and preserve meaningful conversations
               </p>

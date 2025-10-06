@@ -3,6 +3,7 @@ import { BookOpen, Video, MessageCircle } from "lucide-react";
 import Card from "../Card";
 import img1 from "../../assets/1.png";
 import vector from "../../assets/Vector 34.png";
+import AnimatedSection from "../AnimatedSection";
 
 export default function FeaturesSection() {
   return (
@@ -16,23 +17,31 @@ export default function FeaturesSection() {
         <div className="grid md:grid-cols-2 gap-20 items-center">
           {/* LEFT: Image Card (fixed) */}
           <div className="relative order-2 md:order-1">
-            <Card img={img1}  />
+            <Card img={img1} />
           </div>
 
           {/* RIGHT: Text + Features (fixed) */}
           <div className="order-1 md:order-2">
-            <h2 className="text-4xl md:text-5xl font-serif text-gray-900 leading-tight mb-6">
-              The <span className="text-[#FF702A]">World's</span>
-              <br />
-              First <span className="text-[#FF702A]">Authenticated</span>
-              <br />
-              Conversational <span className="text-[#FF702A]">Biography</span>
-            </h2>
+            <AnimatedSection
+              heading={[
+                [
+                  { text: "The" },
+                  { text: "World's", highlight: true },
+                ],
+                [
+                  { text: "First" },
+                  { text: "Authenticated", highlight: true },
+                ],
+                [
+                  { text: "Conversational" },
+                  { text: "Biography", highlight: true },
+                ],
+              ]}
+              description="ForeverYOU lets you create an interactive, verifiably authentic version of yourself — told in your own voice today, preserved for tomorrow. Soon, you'll also be able to appear as a video avatar."
+              headingClass="text-4xl md:text-5xl font-serif text-gray-900 leading-tight mb-6"
+              descriptionClass="text-base text-gray-700 mb-10 leading-relaxed"
+            />
 
-            <p className="text-base text-gray-700 mb-10 leading-relaxed">
-              ForeverYOU lets you create an interactive, verifiably authentic version of yourself — told in your own voice
-              today, preserved for tomorrow. Soon, you'll also be able to appear as a video avatar.
-            </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
               <div className="flex items-start gap-4 flex-col">

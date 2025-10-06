@@ -10,7 +10,7 @@ const FamilyStoryCard = ({img}) => {
 					backgroundPosition: 'center',
 					backgroundRepeat: 'no-repeat',
 				}} className="relative rounded-[24px] overflow-hidden h-full"></div>
-				<div className='h-7 w-7 rounded-full table absolute -bottom-4 bg-[#FFFCEA] right-[15rem] border-[3px] border-gray-600 '>
+				<div className='h-7 w-7 rounded-full hidden xl:table absolute -bottom-4 bg-[#FFFCEA] right-[15rem] border-[3px] border-gray-600 '>
 
 				</div>
 			</div>

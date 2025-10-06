@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import concierge from "../../assets/newcon.png";
 import group from "../../assets/Group 1939.svg";
 import Concierge from "../ConciergeCardImage";
+import AnimatedHeadingAndDescription from "../AnimatedHeadingAndDescription";
 
 const fadeInLeft = { hidden: { opacity: 0, x: -60 }, visible: { opacity: 1, x: 0, transition: { duration: 0.6 } } };
 const fadeInRight = { hidden: { opacity: 0, x: 60 }, visible: { opacity: 1, x: 0, transition: { duration: 0.6 } } };
@@ -50,17 +51,14 @@ export default function ConciergeSection() {
         <img src={group} alt="vector" />
       </div>
       <div className="max-w-7xl mx-auto grid justify-between md:grid-cols-2 gap-16 items-center">
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInLeft}>
-          <h2 className="text-3xl md:text-5xl font-serif text-gray-900 leading-tight mb-6">
-            <span className="font-bold">ForeverYOU Concierge</span> <br />
-            for families who want <br />
-            the very best
-          </h2>
-          <p className=" text-gray-700 mb-8 text-sm">
-            Our Platinum Concierge team personally guides you through the process of creating a ForeverYOU. From in-home
-            recordings to beautifully curated archives, every detail is handled with care and discretion.
-          </p>
-          {/* Updated CTA: jump to exact waitlist card */}
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInRight}>
+          <AnimatedHeadingAndDescription 
+          heading={"ForeverYOU Concierge for families who want the very best"}
+          headingClass="text-4xl md:text-5xl font-serif text-gray-900 mb-6"
+          description={"Our Platinum Concierge team personally guides you through the process of creating a ForeverYOU. From in-home recordings to beautifully curated archives, every detail is handled with care and discretion."}
+          descriptionClass="text-gray-700 mb-8 "
+          />
+         
           <a
             href="#waitlist"
             onClick={handleJoinClick}

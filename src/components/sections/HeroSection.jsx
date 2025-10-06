@@ -4,10 +4,15 @@ import group1 from "../../assets/Group.svg";
 import old from "../../assets/old.png";
 import convertion from "../../assets/convertion.png";
 import flag from "../../assets/flag.png";
+import AnimatedHeadingAndDescription from "../AnimatedHeadingAndDescription";
 
 const fadeInLeft = {
-  hidden: { opacity: 0, x: -60 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  hidden: { opacity: 0, y: 60 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
 };
 const fadeInRight = {
   hidden: { opacity: 0, x: 60 },
@@ -65,18 +70,14 @@ export default function HeroSection() {
           variants={fadeInLeft}
           className="pt-8"
         >
-          <h1 className="text-5xl md:text-6xl font-serif text-gray-900 leading-[1.15] mb-6">
-            Your Story. Your Voice. Forever.
-          </h1>
-          <p className="text-base text-gray-700 leading-relaxed max-w-md">
-            An authenticated digital version of you — so your loved ones and future generations can talk with you across
-            time.
-          </p>
-          <p className="text-base text-gray-700 mb-10 leading-relaxed max-w-md">
-            In an AI-saturated world, authenticity is the new trust. ForeverYOU makes sure your story is real, verified, and
-            yours.
-          </p>
-          <div className="flex flex-col gap-4">
+          <AnimatedHeadingAndDescription
+            heading="Your Story. Your Voice. Forever."
+            description="An authenticated digital version of you — so your loved ones and future generations can talk with you across time.  In an AI-saturated world, authenticity is the new trust. ForeverYOU makes sure your story is real, verified, and
+            yours."
+            headingClass="text-5xl md:text-6xl font-serif text-gray-900 leading-[1.15] mb-6"
+            descriptionClass="text-base text-gray-700 leading-relaxed max-w-md"
+          />
+          <div className="flex flex-col gap-4 mt-5">
             <a
               href="#waitlist"
               onClick={(e) => scrollWithOffset(e, "waitlist")}
@@ -102,8 +103,7 @@ export default function HeroSection() {
           variants={fadeInRight}
           className="relative"
         >
-          {/* <div className="rounded-[35px] shadow-xl cursor-pointer hover:rotate-8 border-[3px] border-gray-900 rotate-[8deg] has-[.child:hover]:rotate-10 ">
-            <div className="relative z-10 bg-[#FFFCEA]/95 duration-300 rounded-[32px] hover:rotate-0 -rotate-[8deg] p-2.5 shadow-xl border-[3px] border-gray-900 h-[28rem]"> */}
+          
           <div className='rounded-[35px] shadow-xl border-[3px] parent border-gray-600 cursor-pointer hover: transition-all duration-500 has-[.child:hover]:-rotate-6'>
             <div className="relative z-10 bg-[#FFFCEA] rounded-[32px] hover:rotate-0 child -rotate-6  p-2.5 shadow-xl border-[3px] border-gray-600  transition-all duration-500 h-[28rem]">
               <div

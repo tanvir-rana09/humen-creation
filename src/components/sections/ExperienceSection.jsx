@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import family2 from "../../assets/family (2).png";
 import { ArrowLeft } from "lucide-react";
+import AnimatedHeadingAndDescription from "../AnimatedHeadingAndDescription";
 
 const fadeInUp = { hidden: { opacity: 0, y: 60 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } };
 const scaleIn = { hidden: { opacity: 0, scale: 0.8 }, visible: { opacity: 1, scale: 1, transition: { duration: 0.6 } } };
@@ -46,25 +47,13 @@ export default function ExperienceSection() {
   return (
     <section id="experience" className="py-16 px-8 bg-[#22463C] w-full max-w-7xl mx-auto rounded-4xl">
       <div className="max-w-6xl mx-auto text-center mb-12">
-        <motion.h2
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeInUp}
-          className="text-5xl font-serif text-white mb-4"
-        >
-          Experience it for yourself.
-        </motion.h2>
-        <motion.p
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeInUp}
-          transition={{ delay: 0.1 }}
-          className="text-white/90 text-base"
-        >
-          Start a conversation with real ForeverYOU avatars — created from authentic life stories.
-        </motion.p>
+         <AnimatedHeadingAndDescription
+         heading={"Experience it for yourself."}
+         headingClass="text-5xl font-serif text-white mb-4 text-center items-center justify-center"
+         description={"Start a conversation with real ForeverYOU avatars — created from authentic life stories."}
+         descriptionClass="text-white/90 text-base"
+
+         />
       </div>
 
       <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-6">

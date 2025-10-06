@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import scrollWithOffset from '../lib/scrollWithOffset';
 
 const Nav = () => {
   const location = useLocation();
@@ -15,9 +16,9 @@ const Nav = () => {
   }, [location]);
 
   const navItems = [
-    { to: '#concierge', label: 'Concierge' },
-    { to: '#experience', label: 'Experience' },
-    { to: '#how-it-works', label: 'How it Works' },
+    { to: 'concierge', label: 'Concierge' },
+    { to: 'experience', label: 'Experience' },
+    { to: 'how-it-works', label: 'How it Works' },
   ];
 
   const mobileMenuVariants = {
@@ -127,6 +128,7 @@ const Nav = () => {
                 >
                   <Link
                     to={item.to}
+                    onClick={(e)=>scrollWithOffset(e, item.to)}
                     className={`text-sm font-semibold px-5 py-2 rounded-full transition-all duration-200 ${
                       isActive(item.to)
                         ? 'bg-gray-900/5 text-gray-900'
@@ -144,13 +146,12 @@ const Nav = () => {
               variants={buttonVariants}
               initial="initial"
               animate="animate"
-              whileHover="hover"
               whileTap="tap"
               className="hidden md:block"
             >
-              <button className="bg-[#1a3e3e] text-white px-6 py-2.5 rounded-full text-sm font-medium shadow-lg hover:shadow-xl transition-shadow">
+              <a href="#waitlist" onClick={(e) => scrollWithOffset(e, "waitlist")} className="bg-[#1a3e3e] text-white px-6 py-2.5 rounded-full text-sm font-medium hover:!shadow-none cursor-pointer">
                 Join Waitlist
-              </button>
+              </a>
             </motion.div>
 
             {/* Mobile Menu Button */}
@@ -237,7 +238,7 @@ const Nav = () => {
                       }}
                       className="pt-2"
                     >
-                      <button className="w-full bg-[#1a3e3e] text-white px-6 py-3.5 rounded-xl text-base font-medium shadow-lg hover:bg-[#2a4e4e] transition-colors">
+                      <button className="w-full bg-[#1a3e3e] text-white px-6 py-3.5 rounded-full text-base font-medium  hover:!shadow-none">
                         Join Waitlist
                       </button>
                     </motion.div>
