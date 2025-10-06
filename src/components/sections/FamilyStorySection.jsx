@@ -78,7 +78,7 @@ const FamilyStorySection = () => {
 				className="relative"
 			>
 				<FamilyStoryCard img={familyStory} />
-				<div className="absolute -bottom-[29rem] right-[20.8rem] w-[10rem] hidden md:block  h-full ">
+				<div className="absolute -bottom-[29rem] right-[19.5rem] w-[10rem] hidden md:block  h-full ">
 					<img src={vector3} alt="" />
 				</div>
 			</motion.div>
@@ -88,11 +88,11 @@ const FamilyStorySection = () => {
 				variants={fadeInRight}
 			>
 				<AnimatedHeadingAndDescription
-  heading={`Your family's stories.\nAlways your control.`}
-  description="ForeverYOU ensures your parents' and grandparents' voices, wisdom, and stories are preserved in a way your family will regularly engage with."
-  headingClass="text-4xl md:text-5xl font-serif text-gray-900 leading-tight mb-6"
-  descriptionClass="text-base text-gray-700 leading-relaxed mb-8"
-/>
+					heading={`Your family's stories.\nAlways your control.`}
+					description="ForeverYOU ensures your parents' and grandparents' voices, wisdom, and stories are preserved in a way your family will regularly engage with."
+					headingClass="text-4xl md:text-5xl font-serif text-gray-900 leading-tight mb-6"
+					descriptionClass="text-base text-gray-700 leading-relaxed mb-8"
+				/>
 
 
 				<motion.div
