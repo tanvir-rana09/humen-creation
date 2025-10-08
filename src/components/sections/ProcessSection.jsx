@@ -115,7 +115,7 @@ export default function ProcessSection() {
         <div className="absolute top-8 left-0 right-0 text-center z-20">
           <AnimatedHeadingAndDescription
             heading={"Seamless. Secure. Personal."}
-            headingClass="text-4xl md:text-5xl font-serif  mb-4 justify-center"
+            headingClass="text-3xl md:text-5xl font-serif  mb-4 justify-center"
             description={
               "Experience how simple it is to create your family's lasting legacy with complete control and security."}
             descriptionClass=" mb-8 max-w-xl mx-auto text-lg"
@@ -150,7 +150,7 @@ export default function ProcessSection() {
           </div>
         </div>
 
-        <div className="relative w-full max-w-7xl mx-auto px-4 md:px-8 h-[500px] mt-56 pt-8">
+        <div className="relative w-full max-w-7xl mx-auto px-4 md:px-8 h-[500px] mt-24 lg:mt-48 xl:mt-56 pt-8 ">
           {SLIDES.map((slide, index) => {
             const slideStart = index / NUMBER_OF_SLIDES;
             const slideEnd = (index + 1) / NUMBER_OF_SLIDES;
@@ -203,9 +203,9 @@ export default function ProcessSection() {
                   zIndex,
                 }}
               >
-                <div className="bg-white rounded-[32px] shadow-[0_16px_64px_rgba(0,0,0,0.15)] h-full w-full">
+                <div className="bg-white rounded-[32px] h-[570px] overflow-hidden shadow-[0_16px_64px_rgba(0,0,0,0.15)] lg:h-full w-full">
                   <div className="grid lg:grid-cols-2 gap-0 h-full">
-                    <div className="relative overflow-hidden rounded-l-[32px]">
+                    <div className="relative overflow-hidden aspect-5/4 w-full">
                       <img
                         src={slide.img}
                         alt={slide.title}
@@ -213,12 +213,12 @@ export default function ProcessSection() {
                         loading="lazy"
                       />
                     </div>
-                    <div className="flex items-center p-8 md:p-16">
-                      <div>
-                        <div className="inline-block bg-[#F5F5DC] text-[#8B7355] text-xs font-semibold px-3 py-1 rounded-full mb-6 uppercase tracking-wider">
+                    <div className="flex items-center p-4 md:p-16">
+                      <div className="space-y-2">
+                        <div className="inline-block bg-[#F5F5DC] text-[#8B7355] text-xs font-semibold px-3 py-1 rounded-full lg:mb-6 uppercase tracking-wider">
                           {slide.step}
                         </div>
-                        <h3 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+                        <h3 className="text-4xl md:text-5xl font-bold text-gray-900 lg:mb-6 leading-tight">
                           {slide.title}
                         </h3>
                         <p className="text-xl text-gray-600 leading-relaxed">
