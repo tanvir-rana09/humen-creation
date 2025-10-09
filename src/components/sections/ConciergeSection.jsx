@@ -46,7 +46,7 @@ export default function ConciergeSection() {
   };
 
   return (
-    <section id="concierge" className="py-48 px-8 overflow-hidden my-10 bg-[#FFFCEA] mx-auto max-w-7xl rounded-4xl relative">
+    <section id="concierge" className="py-48 px-8 xl:px-32 overflow-hidden my-10 bg-[#FFFCEA] mx-auto max-w-7xl rounded-4xl relative">
       <div className="!absolute -top-3 right-[6rem] z-50 w-[18rem] h-48 hidden xl:block">
         <img src={group} alt="vector" />
       </div>
@@ -62,7 +62,7 @@ export default function ConciergeSection() {
           <a
             href="#waitlist"
             onClick={handleJoinClick}
-            className="bg-[#1a3e3e] text-white px-8 py-3 rounded-full hover:bg-[#2a4e4e] font-medium"
+            className="bg-[#0D2C1A] text-white px-8 py-3 rounded-full hover:bg-[#2a4e4e] font-medium"
           >
             Request Details
           </a>

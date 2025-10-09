@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import scrollWithOffset from '../lib/scrollWithOffset';
+import logo from '../assets/ForeverYOU.png'
 
 const Nav = () => {
   const location = useLocation();
@@ -102,8 +103,8 @@ const Nav = () => {
               animate="animate"
               className="flex items-center"
             >
-              <Link to="/" className="text-2xl font-serif italic text-gray-900 hover:text-gray-700 transition-colors">
-                ForeverYOU
+              <Link to="/" className="text-2xl font-serif italic text-gray-900 hover:text-gray-700 transition-colors w-44">
+                <img src={logo} alt='logo'/>
               </Link>
             </motion.div>
 
@@ -149,7 +150,7 @@ const Nav = () => {
               whileTap="tap"
               className="hidden md:block"
             >
-              <a href="#waitlist" onClick={(e) => scrollWithOffset(e, "waitlist")} className="bg-[#1a3e3e] text-white px-6 py-2.5 rounded-full text-sm font-medium hover:!shadow-none cursor-pointer">
+              <a href="#waitlist" onClick={(e) => scrollWithOffset(e, "waitlist")} className="bg-[#0D2C1A] text-white px-10 py-2.5 rounded-full text-sm font-medium hover:!shadow-none cursor-pointer">
                 Join Waitlist
               </a>
             </motion.div>
@@ -238,7 +239,7 @@ const Nav = () => {
                       }}
                       className="pt-2"
                     >
-                      <button className="w-full bg-[#1a3e3e] text-white px-6 py-3.5 rounded-full text-base font-medium  hover:!shadow-none">
+                      <button className="w-full bg-[#0D2C1A] text-white px-6 py-3.5 rounded-full text-base font-medium  hover:!shadow-none">
                         Join Waitlist
                       </button>
                     </motion.div>

@@ -1,5 +1,8 @@
 // src/components/sections/FeaturesSection.jsx
-import { BookOpen, Video, MessageCircle } from "lucide-react";
+import { Video, MessageCircle } from "lucide-react";
+import { RiBookShelfLine } from "react-icons/ri";
+import { PiYoutubeLogo } from "react-icons/pi";
+
 import Card from "../Card";
 import img1 from "../../assets/1.png";
 import vector from "../../assets/Vector 34.png";
@@ -25,49 +28,49 @@ export default function FeaturesSection() {
             <AnimatedSection
               heading={[
                 [
-                  { text: "The" },
-                  { text: "World's", highlight: true },
+                  { text: "Memories" },
+                  { text: "slip away.", highlight: true },
                 ],
                 [
-                  { text: "First" },
-                  { text: "Authenticated", highlight: true },
+                  { text: "Photos gather" },
+                  { text: "dust", highlight: true },
                 ],
                 [
-                  { text: "Conversational" },
-                  { text: "Biography", highlight: true },
+                  { text: "Videos remain" },
+                  { text: "unwatched.", highlight: true },
                 ],
               ]}
-              description="ForeverYOU lets you create an interactive, verifiably authentic version of yourself — told in your own voice today, preserved for tomorrow. Soon, you'll also be able to appear as a video avatar."
+              description="ForeverYOU ensures your parents’ and grandparents’ voices, wisdom, and stories are preserved in a way your family will regularly engage with."
               headingClass="text-4xl md:text-5xl font-serif text-gray-900 leading-tight mb-6"
-              descriptionClass="text-base text-gray-700 mb-10 leading-relaxed"
+              descriptionClass=" text-gray-700 mb-10 leading-relaxed"
             />
 
 
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
-              <div className="flex items-start gap-4 flex-col">
-                <div className="p-2.5 bg-white rounded-lg border-2 border-gray-200 flex-shrink-0">
-                  <BookOpen className="w-5 h-5 text-gray-900" />
+              <div className="flex items-start gap- flex-col gap-4">
+                <div className=" bg-white  border-gray-200 flex-shrink-0">
+                  <RiBookShelfLine className="w-7 h-7 text-gray-600" />
                 </div>
                 <p className="text-gray-600 font-medium leading-relaxed">
-                  Conversational audio now; video avatars coming soon
+                  Interactive conversations happen every day
                 </p>
               </div>
 
-              <div className="flex items-start gap-4 flex-col">
-                <div className="p-2.5 bg-white rounded-lg border-2 border-gray-200 flex-shrink-0">
-                  <Video className="w-5 h-5 text-gray-900" />
+              <div className="flex items-start flex-col gap-4">
+                <div className=" bg-white border-gray-200 flex-shrink-0">
+                  <PiYoutubeLogo className="w-7 h-7 text-gray-900" />
                 </div>
                 <p className="text-gray-600 font-medium leading-relaxed">
-                  You decide what's shared, with whom, and when
+                  Hours of video recordings never get watched
                 </p>
               </div>
 
-              <div className="flex items-start gap-4 flex-col">
-                <div className="p-2.5 bg-white rounded-lg border-2 border-gray-200 flex-shrink-0">
-                  <MessageCircle className="w-5 h-5 text-gray-900" />
+              <div className="flex items-start flex-col gap-4">
+                <div className=" bg-white border-gray-200 flex-shrink-0">
+                  <MessageCircle className="w-6 h-6 text-gray-900" />
                 </div>
                 <p className="text-gray-600 font-medium leading-relaxed">
-                  Blockchain + encryption ensure authenticity &amp; privacy
+                  Interactive conversations happen every day
                 </p>
               </div>
             </div>

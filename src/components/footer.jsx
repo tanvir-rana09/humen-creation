@@ -7,7 +7,8 @@ import { ImInstagram } from "react-icons/im";
 import group from "../assets/Group.svg";
 import vector38 from "../assets/Vector 38.svg";
 import AnimatedHeadingAndDescription from "./AnimatedHeadingAndDescription";
-
+import logo from '../assets/ForeverYOU.png'
+import { Link } from "react-router-dom";
 const SERVICE_ID = "";
 const TEMPLATE_ID = "";
 const PUBLIC_KEY = "";
@@ -327,7 +328,7 @@ const TestimonialCarousel = () => {
                 initial="hidden"
                 animate={yellowSectionInView ? "visible" : "hidden"}
                 variants={fadeInLeft}
-                className="flex-1 p-4 xl:p-8 sm:p-12 lg:p-16 "
+                className="flex-1 p-4 xl:p-24 sm:p-12 lg:p-16 "
               >
                 <div className="max-w-lg">
                   <div className="mb-8">
@@ -337,7 +338,7 @@ const TestimonialCarousel = () => {
                     heading={"Our stories really can live forever."}
                     description="Join the private waitlist today. Founding members will receive exclusive benefits and early access across all pricing tiers."
                     headingClass="text-3xl sm:text-4xl lg:text-5xl font-light text-gray-900 leading-[1.1] mb-6 tracking-tight font-serif"
-                    descriptionClass="text-lg text-gray-800 leading-relaxed font-light"
+                    descriptionClass="text-lg text-gray-800 font-semibold leading-relaxed font-light"
                   />
 
                 </div>
@@ -469,7 +470,7 @@ const TestimonialCarousel = () => {
               className="border-2 border-gray-500 rounded-2xl p-4 hover:border-gray-300 cursor-pointer group"
             >
               <a href="https://winny.chat" target="_blank" className="flex items-center gap-3 ">
-                <span className="text-xl font-medium text-gray-900">
+                <span className="text-lg font-medium text-gray-900">
                   Winny.chat
                 </span>
                 <ArrowUpRight />
@@ -486,7 +487,7 @@ const TestimonialCarousel = () => {
               className="p-4 hover:border-gray-300 cursor-pointer group"
             >
               <div className="mb-">
-                <span className="text-xl font-medium text-gray-900">
+                <span className="text-lg font-medium text-gray-900">
                   Storypedia
                 </span>
               </div>
@@ -494,30 +495,30 @@ const TestimonialCarousel = () => {
                 Our underlying platform, "the Wikipedia of human stories"
               </p>
             </motion.div>
-
-            <motion.div
+<motion.div
               variants={fadeInUp}
               whileHover={{ y: -4 }}
               className="p-4 hover:border-gray-300 cursor-pointer group"
             >
-              <p className="text-xl font-medium text-gray-900">
-                Human Connection Workshops
-              </p>
-              <p className="text-sm text-gray-600">Live sessions for teams</p>
-            </motion.div>
-
-            <motion.div
-              variants={fadeInUp}
-              whileHover={{ y: -4 }}
-              className="p-4 hover:border-gray-300 cursor-pointer group"
-            >
-              <p className="text-xl font-medium text-gray-900">
+              <p className="text-lg font-medium text-gray-900">
                 Winny Conversation Cards
               </p>
               <p className="text-sm text-gray-600">
                 Physical decks to spark deeper talks
               </p>
             </motion.div>
+            <motion.div
+              variants={fadeInUp}
+              whileHover={{ y: -4 }}
+              className="p-4 hover:border-gray-300 cursor-pointer group"
+            >
+              <p className="text-lg font-medium text-gray-900">
+                Human Connection Workshops
+              </p>
+              <p className="text-sm text-gray-600">Live sessions for teams</p>
+            </motion.div>
+
+            
           </motion.div>
         </div>
 
@@ -537,7 +538,9 @@ const TestimonialCarousel = () => {
               className="text-2xl font-light tracking-wide text-gray-900 mb-2"
               style={{ fontFamily: "Georgia, serif" }}
             >
-              Forever<span className="italic">YOU</span>
+              <Link to="/" className="text-2xl font-serif italic text-gray-900 hover:text-gray-700 transition-colors w-44">
+                <img src={logo} alt='logo' className="w-44"/>
+              </Link>
             </div>
           </motion.div>
 

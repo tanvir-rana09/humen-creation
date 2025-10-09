@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import FamilyCard from "../FamilyCard";
-import concierge from "../../assets/newcon.png";
+import concierge from "../../assets/2bc172e82e1c88a25d961c88040e9914e632beb0.png";
 import AnimatedHeadingAndDescription from "../AnimatedHeadingAndDescription";
 
 const fadeInLeft = { hidden: { opacity: 0, x: -60 }, visible: { opacity: 1, x: 0, transition: { duration: 0.6 } } };
@@ -17,7 +17,7 @@ export default function FamilySection() {
            <AnimatedHeadingAndDescription
            heading={"The family connection gift of a lifetime."}
            headingClass="text-4xl md:text-5xl font-serif text-gray-900 leading-tight mb-6"
-           description={"ForeverYOU ensures your parents' and grandparents' voices, wisdom, and stories are preserved in a way your family will regularly engage with."}
+           description={"ForeverYOU ensures your parents’ and grandparents’ voices, wisdom, and stories are preserved in a way your family will regularly engage with."}
            descriptionClass="text-base text-gray-700 leading-relaxed mb-8"
            />
           

@@ -70,8 +70,9 @@ const FamilyStorySection = () => {
 
 	const processInView = useElementInView(processRef, 0.2);
 	return (
-		<div ref={processRef} className="max-w-7xl px-5  py-56 mt-[6rem] mx-auto grid md:grid-cols-2 gap-16 items-center bg-[#FFFCEA]">
-			<motion.div
+		<div ref={processRef} className="  bg-[#FFFCEA]">
+			<div className='px-5 py-56 mx-auto grid md:grid-cols-2 gap-16 items-center max-w-7xl'>
+				<motion.div
 				initial="hidden"
 				animate={processInView ? "visible" : "hidden"}
 				variants={fadeInLeft}
@@ -88,7 +89,7 @@ const FamilyStorySection = () => {
 				variants={fadeInRight}
 			>
 				<AnimatedHeadingAndDescription
-					heading={`Your family's stories.\nAlways your control.`}
+					heading={`Your family’s stories. Always your control.`}
 					description="ForeverYOU ensures your parents' and grandparents' voices, wisdom, and stories are preserved in a way your family will regularly engage with."
 					headingClass="text-4xl md:text-5xl font-serif text-gray-900 leading-tight mb-6"
 					descriptionClass="text-base text-gray-700 leading-relaxed mb-8"
@@ -119,10 +120,11 @@ const FamilyStorySection = () => {
 					</motion.div>
 				</motion.div>
 
-				<button onClick={(e) => scrollWithOffset(e, "waitlist")} className="bg-[#1a3e3e] text-white px-8 py-4 rounded-full hover:bg-[#2a4e4e]  text-sm font-medium">
+				<button onClick={(e) => scrollWithOffset(e, "waitlist")} className="bg-[#1a3e3e] text-white px-8 py-2.5 rounded-full hover:bg-[#2a4e4e] font-medium">
 					Join the Private Waitlist
 				</button>
 			</motion.div>
+			</div>
 		</div>
 	)
 }

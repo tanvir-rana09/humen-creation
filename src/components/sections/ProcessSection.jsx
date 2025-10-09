@@ -7,22 +7,29 @@ import AnimatedHeadingAndDescription from "../AnimatedHeadingAndDescription";
 /* ---------- slides ---------- */
 const SLIDES = [
   {
-    key: "secure",
-    step: "STEP 1",
+    key: "Unbox",
+    step: "Step 1",
     title: "Secure Setup",
     sub: "Your family's stories are protected with enterprise-grade encryption and blockchain verification from day one.",
     img: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1600&h=1200&fit=crop",
   },
   {
-    key: "seamless",
-    step: "STEP 2",
+    key: "Record",
+    step: "Step 2",
     title: "Seamless Experience",
     sub: "Effortlessly capture and organize memories with our intuitive interface designed for all generations.",
     img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=1600&h=1200&fit=crop",
   },
   {
-    key: "personal",
-    step: "STEP 3",
+    key: "Start",
+    step: "Step 3",
+    title: "Personal Control",
+    sub: "You decide what's shared and with whom. Your family's privacy is completely in your hands.",
+    img: "https://images.unsplash.com/photo-1511895426328-dc8714191300?w=1600&h=1200&fit=crop",
+  },
+  {
+    key: "Grow",
+    step: "Step 4",
     title: "Personal Control",
     sub: "You decide what's shared and with whom. Your family's privacy is completely in your hands.",
     img: "https://images.unsplash.com/photo-1511895426328-dc8714191300?w=1600&h=1200&fit=crop",
@@ -39,39 +46,40 @@ export default function ProcessSection() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (!sectionRef.current) return;
+  if (!sectionRef.current) return;
 
-      const section = sectionRef.current;
-      const rect = section.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      const sectionHeight = section.offsetHeight;
+  const section = sectionRef.current;
+  const rect = section.getBoundingClientRect();
+  const windowHeight = window.innerHeight;
+  const sectionHeight = section.offsetHeight;
 
-      const stickyStart = rect.top <= 0;
-      const stickyEnd = rect.bottom <= windowHeight;
-      const shouldBeSticky = stickyStart && !stickyEnd;
+  const stickyStart = rect.top <= 0;
+  const stickyEnd = rect.bottom <= windowHeight;
+  const shouldBeSticky = stickyStart && !stickyEnd;
 
-      setIsSticky(shouldBeSticky);
+  setIsSticky(shouldBeSticky);
 
-      if (shouldBeSticky) {
-        const scrolled = Math.abs(rect.top);
-        const maxScroll = sectionHeight - windowHeight;
-        const progress = Math.max(0, Math.min(scrolled / maxScroll, 1));
+  if (shouldBeSticky) {
+    const scrolled = Math.abs(rect.top);
+    const maxScroll = sectionHeight - windowHeight;
+   const progress = Math.max(0, Math.min(scrolled / maxScroll, 1));
 
         setScrollProgress(progress);
 
-        const slideIndex = Math.min(
-          Math.floor(progress * NUMBER_OF_SLIDES),
-          NUMBER_OF_SLIDES - 1
-        );
-        setCurrentSlide(slideIndex);
-      } else if (stickyEnd) {
-        setScrollProgress(1);
-        setCurrentSlide(NUMBER_OF_SLIDES - 1);
-      } else {
-        setScrollProgress(0);
-        setCurrentSlide(0);
-      }
-    };
+    const slideIndex = Math.min(
+      Math.floor(progress * NUMBER_OF_SLIDES),
+      NUMBER_OF_SLIDES - 1
+    );
+    setCurrentSlide(slideIndex);
+  } else if (stickyEnd) {
+    setScrollProgress(1);
+    setCurrentSlide(NUMBER_OF_SLIDES - 1);
+  } else {
+    setScrollProgress(0);
+    setCurrentSlide(0);
+  }
+};
+
 
     let ticking = false;
     const onScroll = () => {
@@ -117,7 +125,7 @@ export default function ProcessSection() {
             heading={"Seamless. Secure. Personal."}
             headingClass="text-3xl md:text-5xl font-serif  mb-4 justify-center"
             description={
-              "Experience how simple it is to create your family's lasting legacy with complete control and security."}
+              "Join the waitlist and experience how simple it is to create your family's lasting legacy."}
             descriptionClass=" mb-8 max-w-xl mx-auto text-lg"
           />
           {/* Progress indicators - Connected style from ProcessSection2 */}
@@ -125,22 +133,22 @@ export default function ProcessSection() {
             {SLIDES.map((s, i) => (
               <div key={s.key} className="flex items-center">
                 <div
-                  className={`w-12 h-12 rounded-full border-2 flex items-center justify-center text-sm font-bold transition-all duration-500 relative z-10 ${i === currentSlide
-                      ? "bg-[#34414F] text-white border-[#34414F] scale-110"
+                  className={`w-20 xl:w-24 h-10 rounded-full border-2 flex items-center justify-center text-sm transition-all duration-500 relative !z-10 ${i === currentSlide
+                      ? "bg-[#34414F] text-white border-[#34414F] scale-100"
                       : i < currentSlide
                         ? "bg-[#34414F] text-white border-[#34414F] scale-100"
-                        : "bg-transparent text-[#34414F] border-[#34414F]/30 scale-90"
+                        : "bg-[#FFFCEA] text-[#34414F] border-[#34414F]/30 scale-100"
                     }`}
                 >
-                  {i + 1}
+                  {s.key}
                 </div>
                 {i < SLIDES.length - 1 && (
-                  <div className="relative w-16 md:w-32 h-0.5 bg-[#34414F]/20">
+                  <div className="relative w-5 md:w-10 h-0.5 bg-[#34414F]/20">
                     <div
                       className="absolute top-0 left-0 h-full bg-[#34414F] transition-all duration-500"
                       style={{
                         width: i < currentSlide ? '100%' :
-                          i === currentSlide ? `${((scrollProgress - (i / NUMBER_OF_SLIDES)) / (1 / NUMBER_OF_SLIDES)) * 100}%` : '0%'
+                          i === currentSlide ? `${Math.min(((scrollProgress * NUMBER_OF_SLIDES) - i) * 100, 100)}%` : '0%'
                       }}
                     />
                   </div>
@@ -167,55 +175,61 @@ export default function ProcessSection() {
             const isPrevious = index < currentSlide;
             const isNext = index > currentSlide;
 
-            let translateY = 0;
+            let translateY = 100;
             let scale = 1;
             let zIndex = 10;
             let opacity = 1;
 
-            if (isNext) {
+            if (index === 0) {
+              // First slide: Always fixed
+              translateY = 0;
+              scale = 1;
+              opacity = 1;
+              zIndex = currentSlide === 0 ? 15 : 5;
+            } else if (isNext) {
               // Next slides: Hidden below
-              translateY = 280;
-              opacity = 0;
+              translateY = 150;
+              opacity = 1;
               zIndex = 5 + index;
             } else if (isPrevious) {
-              // Previous slides: Stack behind with scroll-stack style
-              const distanceFromCurrent = currentSlide - index;
-              translateY = 0 * distanceFromCurrent; // Slight upward offset for stacking
-              scale = 1 - (0.05 * distanceFromCurrent); // Progressive scaling
-              opacity = 1; // Keep visible for stack effect
-              zIndex = 10 + index; // Lower z-index = behind
+              // Previous slides: Stack behind
+              translateY = 0;
+              scale = 1;
+              opacity = 1;
+              zIndex = 10 + index;
             } else if (isActive) {
+              // Active slide: Slides up from below
               const slideProgress = scrollProgress * SLIDES.length - index;
-              // Slide comes from 100% down to 0% (final position matching step 3)
-              translateY = 100 * (1 - Math.min(slideProgress, 1));
-              scale = 0.92 + (0.08 * Math.min(slideProgress, 1));
-              opacity = Math.min(slideProgress, 1);
-              zIndex = 15;
+              translateY = 1 * (1 - Math.min(slideProgress, 1));
+              scale = 1;
+              opacity = 1;
+              zIndex = 20;
             }
+
 
             return (
               <div
                 key={slide.key}
-                className="absolute inset-0 transition-all duration-700 ease-out"
+                className="absolute inset-0 transition-all duration-700 ease-in-out"
                 style={{
                   transform: `translateY(${translateY}%) scale(${scale})`,
                   //opacity,
                   zIndex,
                 }}
               >
-                <div className="bg-white rounded-[32px] h-[570px] overflow-hidden shadow-[0_16px_64px_rgba(0,0,0,0.15)] lg:h-full w-full">
+                <div className="h-[550px] lg:h-full w-full">
                   <div className="grid lg:grid-cols-2 gap-0 h-full">
-                    <div className="relative overflow-hidden aspect-5/4 w-full">
+                    <div className="relative aspect-5/4 w-full">
                       <img
                         src={slide.img}
                         alt={slide.title}
-                        className="h-full w-full object-cover"
+                        className="h-full w-full object-cover rounded-[32px] overflow-hidden rounded-b-4xl"
                         loading="lazy"
                       />
                     </div>
-                    <div className="flex items-center p-4 md:p-16">
+                    <div className="flex items-center p-4 md:p-16 bg-[#FFFCEA]">
                       <div className="space-y-2">
-                        <div className="inline-block bg-[#F5F5DC] text-[#8B7355] text-xs font-semibold px-3 py-1 rounded-full lg:mb-6 uppercase tracking-wider">
+                        <div className="inline-block bg-[#FFE95A] text-gray-800 font-semibold px-5 py-2 rounded-full lg:mb-6  tracking-wider">
                           {slide.step}
                         </div>
                         <h3 className="text-4xl md:text-5xl font-bold text-gray-900 lg:mb-6 leading-tight">
