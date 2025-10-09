@@ -64,7 +64,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section id="hero" className="pt-32 pb-40 px-8 bg-[#FFFCEA] relative">
+    <section id="hero" className="xl:pt-32 pt-0 md:pt-20 pb-40 px-8 bg-[#FFFCEA] relative">
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-start">
         <motion.div
           initial="hidden"
